@@ -10,7 +10,7 @@ import { CalendarDays, ArrowRight, Shield, Clock, Info } from "lucide-react";
 
 export function Consultation() {
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const formId = "1FAIpQLSdHYfoMhURk9vf4HNURcWhdnxvO_Jvc5DZSxMw1S_l2PlikPQ";
+  const formId = import.meta.env.VITE_GOOGLE_FORM_ID;;
   const embeddedFormUrl = `https://docs.google.com/forms/d/e/${formId}/viewform?embedded=true`;
 
   return (

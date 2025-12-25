@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Doctors } from "@/components/Doctors";
@@ -11,6 +13,38 @@ import { Footer } from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 
 const Index = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Check if we have a scrollTo state from navigation
+    const state = location.state as { scrollTo?: string; scrollToTop?: boolean } | null;
+    const hash = location.hash.substring(1); // Remove the #
+    
+    if (state?.scrollToTop) {
+      // Scroll to top when navigating from logo click
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 150);
+      });
+      return;
+    }
+    
+    const scrollToId = state?.scrollTo || hash;
+    
+    if (scrollToId) {
+      // Use requestAnimationFrame for more reliable timing
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          const element = document.getElementById(scrollToId);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 150);
+      });
+    }
+  }, [location.state, location.hash]);
+
   return (
     <>
       <Helmet>

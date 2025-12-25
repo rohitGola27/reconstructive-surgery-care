@@ -5,12 +5,14 @@ import { Download, FileText, ArrowLeft, Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
+import { toast } from "@/hooks/use-toast";
 
 interface Document {
   id: number;
   title: string;
   category: string;
   year: string;
+  pdfPath?: string;
 }
 
 const documents: Document[] = [
@@ -20,24 +22,28 @@ const documents: Document[] = [
     title: "Perforator Flap Techniques in Breast Reconstruction",
     category: "Microsurgery",
     year: "2023",
+    pdfPath: "/documents/Perforator Classification Paper.pdf",
   },
   {
     id: 2,
     title: "DIEP Flap: Technical Considerations and Outcomes",
     category: "Microsurgery",
     year: "2022",
+    pdfPath: "/documents/Internal Mammary Perforators Cadaver Study.pdf",
   },
   {
     id: 3,
     title: "Advances in Free Flap Monitoring",
     category: "Microsurgery",
     year: "2022",
+    pdfPath: "/documents/Katz_et_al-2005-Microsurgery.pdf",
   },
   {
     id: 4,
     title: "Supermicrosurgery Applications in Lymphedema Treatment",
     category: "Microsurgery",
     year: "2021",
+    pdfPath: "/documents/Katz_et_al-2010-Microsurgery.pdf",
   },
 
   // Breast Reconstruction
@@ -46,30 +52,35 @@ const documents: Document[] = [
     title: "Immediate vs Delayed Breast Reconstruction: A Comparative Analysis",
     category: "Breast Reconstruction",
     year: "2023",
+    pdfPath: "/documents/Augmentation Mastopexy Paper.pdf",
   },
   {
     id: 6,
     title: "Prepectoral Implant Reconstruction Techniques",
     category: "Breast Reconstruction",
     year: "2023",
+    pdfPath: "/documents/Augmentation Mastopexy Paper.pdf",
   },
   {
     id: 7,
     title: "Autologous Tissue Reconstruction: Patient Selection Criteria",
     category: "Breast Reconstruction",
     year: "2022",
+    pdfPath: "/documents/Fat Transfer Dr.Singh Chapter.pdf",
   },
   {
     id: 8,
     title: "Nipple-Sparing Mastectomy and Reconstruction Outcomes",
     category: "Breast Reconstruction",
     year: "2021",
+    pdfPath: "/documents/Nipple Sparing Mastectomy.pdf",
   },
   {
     id: 9,
     title: "Hybrid Approaches in Breast Reconstruction",
     category: "Breast Reconstruction",
     year: "2020",
+    pdfPath: "/documents/Augmentation Mastopexy Paper.pdf",
   },
 
   // Oncology
@@ -78,24 +89,28 @@ const documents: Document[] = [
     title: "Mohs Micrographic Surgery: Reconstruction Techniques",
     category: "Oncology",
     year: "2023",
+    pdfPath: "/documents/The_Buccal_Fat_Pad_Flap_for_Periorbital.24.pdf",
   },
   {
     id: 11,
     title: "Facial Skin Cancer: Aesthetic Reconstruction Principles",
     category: "Oncology",
     year: "2022",
+    pdfPath: "/documents/The_Buccal_Fat_Pad_Flap_for_Periorbital.24.pdf",
   },
   {
     id: 12,
     title: "Melanoma Excision and Reconstruction Guidelines",
     category: "Oncology",
     year: "2022",
+    pdfPath: "/documents/AntiNeoplastic Agents.pdf",
   },
   {
     id: 13,
     title: "Scalp Reconstruction After Oncologic Resection",
     category: "Oncology",
     year: "2021",
+    pdfPath: "/documents/The_Buccal_Fat_Pad_Flap_for_Periorbital.24.pdf",
   },
 
   // Trauma
@@ -104,24 +119,28 @@ const documents: Document[] = [
     title: "Complex Wound Management in Trauma Settings",
     category: "Trauma",
     year: "2023",
+    pdfPath: "/documents/Utility ALT Flap Trauma Patient.pdf",
   },
   {
     id: 15,
     title: "Facial Trauma: Principles of Soft Tissue Repair",
     category: "Trauma",
     year: "2022",
+    pdfPath: "/documents/Post Traumatic Maxillary Recon.pdf",
   },
   {
     id: 16,
     title: "Lower Extremity Reconstruction After Trauma",
     category: "Trauma",
     year: "2021",
+    pdfPath: "/documents/Utility ALT Flap Trauma Patient.pdf",
   },
   {
     id: 17,
     title: "Pediatric Trauma Reconstruction Considerations",
     category: "Trauma",
     year: "2020",
+    pdfPath: "/documents/Post Traumatic Maxillary Recon.pdf",
   },
 
   // Hand Surgery
@@ -130,18 +149,21 @@ const documents: Document[] = [
     title: "Flexor Tendon Repair: Current Protocols",
     category: "Hand Surgery",
     year: "2023",
+    pdfPath: "/documents/Dog Bite-Article Singh.pdf",
   },
   {
     id: 19,
     title: "Digital Replantation: Indications and Techniques",
     category: "Hand Surgery",
     year: "2022",
+    pdfPath: "/documents/Dog Bite-Article Singh.pdf",
   },
   {
     id: 20,
     title: "Nerve Repair and Grafting in Hand Injuries",
     category: "Hand Surgery",
     year: "2021",
+    pdfPath: "/documents/Dog Bite-Article Singh.pdf",
   },
 ];
 
@@ -283,20 +305,25 @@ export default function ClinicalExpertisePage() {
                       variant="outline"
                       size="sm"
                       className="flex-shrink-0"
-                      asChild
+                      onClick={() => {
+                        if (doc.pdfPath) {
+                          const link = document.createElement("a");
+                          link.href = doc.pdfPath;
+                          link.download = doc.pdfPath.split("/").pop() || `${doc.title}.pdf`;
+                          document.body.appendChild(link);
+                          link.click();
+                          link.remove();
+                        } else {
+                          toast({
+                            title: "PDF Not Available",
+                            description: "PDF file not available for this document.",
+                            variant: "destructive",
+                          });
+                        }
+                      }}
                     >
-                      <a
-                        href="#"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          alert(
-                            "PDF download functionality would be implemented here. This is a placeholder for the actual document."
-                          );
-                        }}
-                      >
-                        <Download className="w-4 h-4" />
-                        Download PDF
-                      </a>
+                      <Download className="w-4 h-4" />
+                      Download PDF
                     </Button>
                   </div>
                 </article>

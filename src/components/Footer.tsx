@@ -117,7 +117,7 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-6">
             <a
-              href="https://maps.google.com"
+              href="https://www.google.com/maps/search/?api=1&query=123+Medical+Center+Drive,+Suite+400,+Washington,+DC+20001"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-primary-foreground/50 hover:text-primary transition-colors"
