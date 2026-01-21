@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import doctorNavin from "@/assets/doctor-navin.jpg";
-import doctorMarwan from "@/assets/doctor-marwan.jpg";
+import doctorNavin from "@/assets/navinSingh.jpg";
+import doctorMarwan from "@/assets/DrMarwan.jpg";
 
 const doctors = [
   {

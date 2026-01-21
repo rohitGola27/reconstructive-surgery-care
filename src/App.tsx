@@ -21,7 +21,10 @@ const App = () => (
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/clinical-expertise" element={<ClinicalExpertisePage />} />
+            <Route
+              path="/clinical-expertise"
+              element={<ClinicalExpertisePage />}
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

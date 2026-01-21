@@ -17,9 +17,12 @@ const Index = () => {
 
   useEffect(() => {
     // Check if we have a scrollTo state from navigation
-    const state = location.state as { scrollTo?: string; scrollToTop?: boolean } | null;
+    const state = location.state as {
+      scrollTo?: string;
+      scrollToTop?: boolean;
+    } | null;
     const hash = location.hash.substring(1); // Remove the #
-    
+
     if (state?.scrollToTop) {
       // Scroll to top when navigating from logo click
       requestAnimationFrame(() => {
@@ -29,9 +32,9 @@ const Index = () => {
       });
       return;
     }
-    
+
     const scrollToId = state?.scrollTo || hash;
-    
+
     if (scrollToId) {
       // Use requestAnimationFrame for more reliable timing
       requestAnimationFrame(() => {
@@ -48,7 +51,7 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Reconstructive Surgery Specialists | Expert Plastic Surgeons</title>
+        <title>Restore Plastic Surgery | Expert Plastic Surgeons</title>
         <meta
           name="description"
           content="Board-certified plastic and reconstructive surgeons specializing in breast reconstruction, skin cancer treatment, and trauma surgery. Personalized care with exceptional outcomes."
@@ -56,7 +59,7 @@ const Index = () => {
       </Helmet>
 
       <Header />
-      
+
       <main>
         <Hero />
         <Doctors />

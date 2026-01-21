@@ -20,9 +20,9 @@ export function Header() {
     if (e) {
       e.preventDefault();
     }
-    
+
     const hash = href.substring(1); // Remove the #
-    
+
     // If we're on a different route, navigate to home with hash
     if (location.pathname === "/") {
       // Already on home page, just scroll to section
@@ -41,14 +41,14 @@ export function Header() {
         }
       }, 100);
     }
-    
+
     // Close mobile menu if open
     setMobileMenuOpen(false);
   };
 
   const handleLogoClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    
+
     if (location.pathname === "/") {
       // Already on home page, scroll to top
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -59,7 +59,7 @@ export function Header() {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }, 100);
     }
-    
+
     // Close mobile menu if open
     setMobileMenuOpen(false);
   };
@@ -74,10 +74,14 @@ export function Header() {
           className="flex items-center gap-2 cursor-pointer"
         >
           <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">RS</span>
+            <span className="text-primary-foreground font-bold text-lg">
+              RS
+            </span>
           </div>
           <div className="hidden sm:block">
-            <p className="font-semibold text-foreground leading-tight">Reconstructive Surgery</p>
+            <p className="font-semibold text-foreground leading-tight">
+              Restore Plastic Surgery
+            </p>
             <p className="text-xs text-muted-foreground">Specialists</p>
           </div>
         </a>

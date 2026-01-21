@@ -193,7 +193,7 @@ export default function ClinicalExpertisePage() {
     <>
       <Helmet>
         <title>
-          Clinical Expertise & Case Studies | Reconstructive Surgery Specialists
+          Clinical Expertise & Case Studies | Restore Plastic Surgery
         </title>
         <meta
           name="description"
@@ -309,14 +309,16 @@ export default function ClinicalExpertisePage() {
                         if (doc.pdfPath) {
                           const link = document.createElement("a");
                           link.href = doc.pdfPath;
-                          link.download = doc.pdfPath.split("/").pop() || `${doc.title}.pdf`;
+                          link.download =
+                            doc.pdfPath.split("/").pop() || `${doc.title}.pdf`;
                           document.body.appendChild(link);
                           link.click();
                           link.remove();
                         } else {
                           toast({
                             title: "PDF Not Available",
-                            description: "PDF file not available for this document.",
+                            description:
+                              "PDF file not available for this document.",
                             variant: "destructive",
                           });
                         }
