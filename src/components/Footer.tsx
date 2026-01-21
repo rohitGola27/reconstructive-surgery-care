@@ -51,18 +51,17 @@ export function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-sm">123 Medical Center Drive</p>
-                  <p className="text-sm text-primary-foreground/60">
-                    Suite 400, Washington, DC 20001
+                  <p className="text-sm">
+                    7601 Lewinsville Road Suite 300 Mclean, VA 22102
                   </p>
                 </div>
               </div>
               <a
-                href="tel:+12025551234"
+                href="tel:+703-269-0015"
                 className="flex items-center gap-3 hover:text-primary transition-colors"
               >
                 <Phone className="w-5 h-5 text-primary" />
-                <span className="text-sm">(202) 555-1234</span>
+                <span className="text-sm">703-269-0015</span>
               </a>
               <a
                 href="mailto:info@reconstructivesurgery.com"
@@ -125,12 +124,12 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8">
           <p className="text-sm text-primary-foreground/50">
-            © {new Date().getFullYear()} Reconstructive Surgery Specialists. All
-            rights reserved.
+            © {new Date().getFullYear()} Restore Plastic Surgery. All rights
+            reserved.
           </p>
           <div className="flex items-center gap-6">
             <a
-              href="https://www.google.com/maps/search/?api=1&query=123+Medical+Center+Drive,+Suite+400,+Washington,+DC+20001"
+              href="https://www.google.com/maps/place/7601+Lewinsville+Rd+STE+300,+McLean,+VA+22102,+USA/@38.9346215,-77.2097581,17z/data=!3m1!4b1!4m6!3m5!1s0x89b64ababe944535:0x3fdb95abd338db87!8m2!3d38.9346215!4d-77.2071778!16s%2Fg%2F11f4lknmh9?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoKLDEwMDc5MjA2N0gBUAM%3D"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-primary-foreground/50 hover:text-primary transition-colors"
