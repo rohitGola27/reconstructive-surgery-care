@@ -64,11 +64,11 @@ export function Footer() {
                 <span className="text-sm">703-269-0015</span>
               </a>
               <a
-                href="mailto:info@reconstructivesurgery.com"
+                href="mailto:RestoreMePS@gmail.com"
                 className="flex items-center gap-3 hover:text-primary transition-colors"
               >
                 <Mail className="w-5 h-5 text-primary" />
-                <span className="text-sm">info@reconstructivesurgery.com</span>
+                <span className="text-sm">RestoreMePS@gmail.com</span>
               </a>
             </div>
           </div>
